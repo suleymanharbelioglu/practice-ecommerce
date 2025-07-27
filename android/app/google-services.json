@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1049212809961",
+    "project_id": "practice-ecommerce-69290",
+    "storage_bucket": "practice-ecommerce-69290.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049212809961:android:9053ea84fdf8af262af678",
+        "android_client_info": {
+          "package_name": "com.example.practice_ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2EOAbbmhyR94893qY6vIXA8FrnT4bS48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
