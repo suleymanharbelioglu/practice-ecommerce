@@ -50,14 +50,17 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   }
 
   @override
-  Future<Either> getAges() async {
+  Future<Either<String, List<QueryDocumentSnapshot<Map<String, dynamic>>>>>
+  getAges() async {
     try {
       var returnedData = await FirebaseFirestore.instance
           .collection('Ages')
           .get();
       return Right(returnedData.docs);
-    } catch (e) {
-      return const Left('Please try again');
+    } catch (e, stackTrace) {
+      print('🔥 Firebase Hatası: $e');
+      print('📌 StackTrace: $stackTrace');
+      return Left('Bir hata oluştu: $e');
     }
   }
 

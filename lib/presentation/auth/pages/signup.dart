@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:practice_ecommerce/common/helper/navigator/app_navigator.dart';
 import 'package:practice_ecommerce/common/widets/appbar/app_bar.dart';
 import 'package:practice_ecommerce/common/widets/button/basic_app_button.dart';
+import 'package:practice_ecommerce/data/auth/models/user_creation_req.dart';
 import 'package:practice_ecommerce/presentation/auth/pages/gender_and_age_selection.dart';
 import 'package:practice_ecommerce/presentation/auth/pages/signin.dart';
 
@@ -78,7 +79,17 @@ class SignupPage extends StatelessWidget {
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, GenderAndAgeSelectionPage());
+        AppNavigator.push(
+          context,
+          GenderAndAgeSelectionPage(
+            userCreationReq: UserCreationReq(
+              firstName: _firstNameCon.text,
+              email: _emailCon.text,
+              lastName: _lastNameCon.text,
+              password: _passwordCon.text,
+            ),
+          ),
+        );
       },
       title: 'Continue',
     );
