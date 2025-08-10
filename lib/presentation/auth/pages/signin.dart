@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:practice_ecommerce/common/helper/navigator/app_navigator.dart';
 import 'package:practice_ecommerce/common/widgets/appbar/app_bar.dart';
 import 'package:practice_ecommerce/common/widgets/button/basic_app_button.dart';
+import 'package:practice_ecommerce/data/auth/models/user_signin_req.dart';
 import 'package:practice_ecommerce/presentation/auth/pages/enter_password.dart';
 import 'package:practice_ecommerce/presentation/auth/pages/signup.dart';
 
@@ -50,7 +51,10 @@ class SigninPage extends StatelessWidget {
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, EnterPasswordPage());
+        AppNavigator.push(
+          context,
+          EnterPasswordPage(signinReq: UserSigninReq(email: _emailCon.text)),
+        );
       },
       title: "Continue",
     );
