@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:practice_ecommerce/domain/auth/entity/user.dart';
+
 
 class UserModel {
   final String userId;
@@ -47,14 +49,14 @@ class UserModel {
       UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
-// extension UserXModel on UserModel {
-//   UserEntity toEntity() {
-//     return UserEntity(
-//         userId: userId,
-//         firstName: firstName,
-//         lastName: lastName,
-//         email: email,
-//         image: image,
-//         gender: gender);
-//   }
-// }
+extension UserXModel on UserModel {
+  UserEntity toEntity() {
+    return UserEntity(
+        userId: userId,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        image: image,
+        gender: gender);
+  }
+}
