@@ -8,12 +8,13 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<void> appStarted() async {
     await Future.delayed(Duration(seconds: 3));
-
+    // await FirebaseAuth.instance.signOut();
     var isLoggedIn = await sl<IsLoggedInUseCase>().call();
     if (isLoggedIn) {
       emit(Authenticated());
     } else {
       emit(Unauthenticated());
     }
+    // emit(Unauthenticated());
   }
 }

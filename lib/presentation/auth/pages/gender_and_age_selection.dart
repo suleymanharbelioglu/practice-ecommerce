@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_ecommerce/common/bloc/button/button_state.dart';
 import 'package:practice_ecommerce/common/bloc/button/button_state_cubit.dart';
 import 'package:practice_ecommerce/common/helper/bottomsheet/app_bottomsheet.dart';
+import 'package:practice_ecommerce/common/helper/navigator/app_navigator.dart';
 import 'package:practice_ecommerce/common/widgets/appbar/app_bar.dart';
 import 'package:practice_ecommerce/common/widgets/button/basic_reactive_button.dart';
 import 'package:practice_ecommerce/core/configs/theme/app_colors.dart';
@@ -11,6 +12,7 @@ import 'package:practice_ecommerce/domain/auth/usecases/signup.dart';
 import 'package:practice_ecommerce/presentation/auth/bloc/age_selection_cubit.dart';
 import 'package:practice_ecommerce/presentation/auth/bloc/ages_display_cubit.dart';
 import 'package:practice_ecommerce/presentation/auth/bloc/gender_selection_cubit.dart';
+import 'package:practice_ecommerce/presentation/auth/pages/signin.dart';
 import 'package:practice_ecommerce/presentation/auth/widgets/ages.dart';
 
 class GenderAndAgeSelectionPage extends StatelessWidget {
@@ -36,6 +38,9 @@ class GenderAndAgeSelectionPage extends StatelessWidget {
                 behavior: SnackBarBehavior.floating,
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
+            }
+            if (state is ButtonSuccessState) {
+              AppNavigator.pushAndRemove(context, SigninPage());
             }
           },
           child: Column(

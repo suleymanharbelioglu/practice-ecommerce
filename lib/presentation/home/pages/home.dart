@@ -15,14 +15,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Header(),
-            SizedBox(height: 24,),
+            SizedBox(height: 24),
             SearchField(),
-            SizedBox(height: 24,),
+            SizedBox(height: 24),
             Categories(),
-            SizedBox(height: 24,),
+            SizedBox(height: 24),
             TopSelling(),
-            SizedBox(height: 24,),
-            NewIn()
+            SizedBox(height: 24),
+            NewIn(),
           ],
         ),
       ),

@@ -11,10 +11,13 @@ class UserInfoDisplayCubit extends Cubit<UserInfoDisplayState> {
 
     returnedData.fold(
       (error) {
+        print(error);
         emit(LoadUserInfoFailure());
       },
       (data) {
-        UserInfoLoaded(user: data);
+        print(data);
+
+        emit(UserInfoLoaded(user: data));
       },
     );
   }
