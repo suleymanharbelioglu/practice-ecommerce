@@ -41,48 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDtkEYOj8ncZyc2dwt7lV93cYWzPJRegnc',
-    appId: '1:1049212809961:web:522e10e2a462b29c2af678',
-    messagingSenderId: '1049212809961',
-    projectId: 'practice-ecommerce-69290',
-    authDomain: 'practice-ecommerce-69290.firebaseapp.com',
-    storageBucket: 'practice-ecommerce-69290.firebasestorage.app',
-    measurementId: 'G-FRZVMEQMKW',
+    apiKey: 'AIzaSyB4FgPaoHgTvCKWRmqmsKwpD2wRg8K2D54',
+    appId: '1:652698119526:web:82303469839a8afe53eca7',
+    messagingSenderId: '652698119526',
+    projectId: 'practice-ecommerce-89894',
+    authDomain: 'practice-ecommerce-89894.firebaseapp.com',
+    storageBucket: 'practice-ecommerce-89894.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD2EOAbbmhyR94893qY6vIXA8FrnT4bS48',
-    appId: '1:1049212809961:android:9053ea84fdf8af262af678',
-    messagingSenderId: '1049212809961',
-    projectId: 'practice-ecommerce-69290',
-    storageBucket: 'practice-ecommerce-69290.firebasestorage.app',
+    apiKey: 'AIzaSyABX19wMqpdCZSoGvPrUd-t0RWFLu68nC8',
+    appId: '1:652698119526:android:6db90e57e9e15a9853eca7',
+    messagingSenderId: '652698119526',
+    projectId: 'practice-ecommerce-89894',
+    storageBucket: 'practice-ecommerce-89894.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDjMknZ-nj_0e66OSvjnlO05OGmfhtij4s',
-    appId: '1:1049212809961:ios:d6dc0a7c4789cf082af678',
-    messagingSenderId: '1049212809961',
-    projectId: 'practice-ecommerce-69290',
-    storageBucket: 'practice-ecommerce-69290.firebasestorage.app',
+    apiKey: 'AIzaSyD43JNKAZYWFVcqIpzAcqxZgnlYcWA0FaA',
+    appId: '1:652698119526:ios:8096fbadfad2b29053eca7',
+    messagingSenderId: '652698119526',
+    projectId: 'practice-ecommerce-89894',
+    storageBucket: 'practice-ecommerce-89894.firebasestorage.app',
     iosBundleId: 'com.example.practiceEcommerce',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDjMknZ-nj_0e66OSvjnlO05OGmfhtij4s',
-    appId: '1:1049212809961:ios:d6dc0a7c4789cf082af678',
-    messagingSenderId: '1049212809961',
-    projectId: 'practice-ecommerce-69290',
-    storageBucket: 'practice-ecommerce-69290.firebasestorage.app',
+    apiKey: 'AIzaSyD43JNKAZYWFVcqIpzAcqxZgnlYcWA0FaA',
+    appId: '1:652698119526:ios:8096fbadfad2b29053eca7',
+    messagingSenderId: '652698119526',
+    projectId: 'practice-ecommerce-89894',
+    storageBucket: 'practice-ecommerce-89894.firebasestorage.app',
     iosBundleId: 'com.example.practiceEcommerce',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDtkEYOj8ncZyc2dwt7lV93cYWzPJRegnc',
-    appId: '1:1049212809961:web:bdb124d39491847f2af678',
-    messagingSenderId: '1049212809961',
-    projectId: 'practice-ecommerce-69290',
-    authDomain: 'practice-ecommerce-69290.firebaseapp.com',
-    storageBucket: 'practice-ecommerce-69290.firebasestorage.app',
-    measurementId: 'G-489JF2EMK0',
+    apiKey: 'AIzaSyB4FgPaoHgTvCKWRmqmsKwpD2wRg8K2D54',
+    appId: '1:652698119526:web:473e3aa82ac00ada53eca7',
+    messagingSenderId: '652698119526',
+    projectId: 'practice-ecommerce-89894',
+    authDomain: 'practice-ecommerce-89894.firebaseapp.com',
+    storageBucket: 'practice-ecommerce-89894.firebasestorage.app',
   );
 }

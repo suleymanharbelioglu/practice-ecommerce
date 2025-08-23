@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practice_ecommerce/common/bloc/categories/categories_display_cubit.dart';
+import 'package:practice_ecommerce/common/bloc/categories/categories_display_state.dart';
+import 'package:practice_ecommerce/common/helper/images/image_display.dart';
+import 'package:practice_ecommerce/domain/category/entity/category.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [_seaAll(context), const SizedBox(height: 20), _categories()],
+    return BlocProvider(
+      create: (context) => CategoriesDisplayCubit()..displayCategories(),
+      child: BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
+        builder: (context, state) {
+          if (state is CategoriesLoading) {
+            return const CircularProgressIndicator();
+          }
+          if (state is CategoriesLoaded) {
+            return Column(
+              children: [
+                _seaAll(context),
+                const SizedBox(height: 20),
+                _categories(state.categories),
+              ],
+            );
+          }
+          return Container();
+        },
+      ),
     );
   }
 
@@ -34,7 +56,7 @@ class Categories extends StatelessWidget {
     );
   }
 
-  Widget _categories() {
+  Widget _categories(List<CategoryEntity> categories) {
     return SizedBox(
       height: 100,
       child: ListView.separated(
@@ -49,17 +71,19 @@ class Categories extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
-                  // image: DecorationImage(
-                  //   fit: BoxFit.fill,
-                  //   image: NetworkImage(
-                  //     ImageDisplayHelper.generateCategoryImageURL(categories[index].image),
-                  //   )
-                  // )
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(
+                      ImageDisplayHelper.generateCategoryImageURL(
+                        categories[index].image,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                "text",
+                categories[index].title,
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -69,7 +93,7 @@ class Categories extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) => const SizedBox(width: 15),
-        itemCount: 20,
+        itemCount: categories.length,
       ),
     );
   }
