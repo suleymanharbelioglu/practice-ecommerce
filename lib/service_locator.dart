@@ -14,7 +14,9 @@ import 'package:practice_ecommerce/domain/auth/usecases/signin.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/signup.dart';
 import 'package:practice_ecommerce/domain/category/repository/category.dart';
 import 'package:practice_ecommerce/domain/category/usecases/get_categories.dart';
-import 'package:practice_ecommerce/domain/product/product.dart';
+import 'package:practice_ecommerce/domain/product/repository/product.dart';
+import 'package:practice_ecommerce/domain/product/usecases/get_new_in.dart';
+import 'package:practice_ecommerce/domain/product/usecases/get_top_selling.dart';
 
 final sl = GetIt.instance;
 
@@ -23,7 +25,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
   sl.registerSingleton<CategoryFirebaseService>(CategoryFirebaseSeviceImpl());
   sl.registerSingleton<ProductFirebaseService>(ProductFirebaseServiceImpl());
-  
+
   //repositories
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl());
   sl.registerSingleton<CategoryRepository>(CategoryRepositoryImpl());
@@ -39,4 +41,6 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
   sl.registerSingleton<GetUserUseCase>(GetUserUseCase());
   sl.registerSingleton<GetCategoriesUseCase>(GetCategoriesUseCase());
+  sl.registerSingleton<GetTopSellingUseCase>(GetTopSellingUseCase());
+  sl.registerSingleton<GetNewInUseCase>(GetNewInUseCase());
 }

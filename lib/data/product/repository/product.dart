@@ -1,10 +1,42 @@
 import 'package:dartz/dartz.dart';
-import 'package:practice_ecommerce/domain/product/product.dart';
+import 'package:practice_ecommerce/data/product/model/product.dart';
+import 'package:practice_ecommerce/data/product/source/product_firebase_service.dart';
+import 'package:practice_ecommerce/domain/product/repository/product.dart';
+import 'package:practice_ecommerce/service_locator.dart';
 
 class ProductRepositoryImpl extends ProductRepository {
   @override
-  Future<Either> getTopSelling() {
-    // TODO: implement getTopSelling
-    throw UnimplementedError();
+  Future<Either> getTopSelling() async {
+    var returnedData = await sl<ProductFirebaseService>().getTopSelling();
+
+    return returnedData.fold(
+      (error) {
+        return Left(error);
+      },
+      (data) {
+        return Right(
+          List.from(
+            data,
+          ).map((e) => ProductModel.fromMap(e).toEntity()).toList(),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either> getNewIn() async {
+    var returnedData = await sl<ProductFirebaseService>().getNewIn();
+    return returnedData.fold(
+      (error) {
+        return Left(error);
+      },
+      (data) {
+        return Right(
+          List.from(
+            data,
+          ).map((e) => ProductModel.fromMap(e).toEntity()).toList(),
+        );
+      },
+    );
   }
 }
