@@ -17,6 +17,7 @@ import 'package:practice_ecommerce/domain/category/usecases/get_categories.dart'
 import 'package:practice_ecommerce/domain/product/repository/product.dart';
 import 'package:practice_ecommerce/domain/product/usecases/get_new_in.dart';
 import 'package:practice_ecommerce/domain/product/usecases/get_products_by_category_id.dart';
+import 'package:practice_ecommerce/domain/product/usecases/get_products_by_title.dart';
 import 'package:practice_ecommerce/domain/product/usecases/get_top_selling.dart';
 
 final sl = GetIt.instance;
@@ -44,5 +45,8 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<GetCategoriesUseCase>(GetCategoriesUseCase());
   sl.registerSingleton<GetTopSellingUseCase>(GetTopSellingUseCase());
   sl.registerSingleton<GetNewInUseCase>(GetNewInUseCase());
-  sl.registerSingleton<GetProductsByCategoryIdUseCase>(GetProductsByCategoryIdUseCase());
+  sl.registerSingleton<GetProductsByCategoryIdUseCase>(
+    GetProductsByCategoryIdUseCase(),
+  );
+  sl.registerSingleton<GetProductsByTitleUseCase>(GetProductsByTitleUseCase());
 }
