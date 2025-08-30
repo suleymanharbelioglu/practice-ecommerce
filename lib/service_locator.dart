@@ -11,6 +11,7 @@ import 'package:practice_ecommerce/domain/auth/repository/auth.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/get_ages.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/get_user.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/is_logged_in.dart';
+import 'package:practice_ecommerce/domain/auth/usecases/logout.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/send_password_reset_email.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/signin.dart';
 import 'package:practice_ecommerce/domain/auth/usecases/signup.dart';
@@ -55,6 +56,7 @@ Future<void> initializeDependencies() async {
   );
   sl.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
   sl.registerSingleton<GetUserUseCase>(GetUserUseCase());
+  sl.registerSingleton<LogoutUseCase>(LogoutUseCase());
   sl.registerSingleton<GetCategoriesUseCase>(GetCategoriesUseCase());
   sl.registerSingleton<GetTopSellingUseCase>(GetTopSellingUseCase());
   sl.registerSingleton<GetNewInUseCase>(GetNewInUseCase());

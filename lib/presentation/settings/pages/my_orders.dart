@@ -14,97 +14,84 @@ class MyOrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppbar(
-          title: Text(
-            'My Orders'
-          ),
-        ),
-        body: BlocProvider(
-          create: (context) => OrdersDisplayCubit()..displayOrders(),
-          child: BlocBuilder<OrdersDisplayCubit,OrdersDisplayState>(
-            builder: (context, state) {
-              if (state is OrdersLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (state is OrdersLoaded){
-                return _orders(state.orders);
-              }
+      appBar: const BasicAppbar(hideBack: false, title: Text('My Orders')),
+      body: BlocProvider(
+        create: (context) => OrdersDisplayCubit()..displayOrders(),
+        child: BlocBuilder<OrdersDisplayCubit, OrdersDisplayState>(
+          builder: (context, state) {
+            if (state is OrdersLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state is OrdersLoaded) {
+              return _orders(state.orders);
+            }
 
-              if (state is LoadOrdersFailure){
-                return Center(
-                  child: Text(
-                    state.errorMessage
-                  ),
-                );
-              }
-              return Container();
-            },
-          )
-        )
+            if (state is LoadOrdersFailure) {
+              return Center(child: Text(state.errorMessage));
+            }
+            return Container();
+          },
+        ),
+      ),
     );
   }
-    Widget _orders(List<OrderEntity> orders) {
+
+  Widget _orders(List<OrderEntity> orders) {
     return ListView.separated(
       padding: const EdgeInsets.all(16),
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: (){
-              AppNavigator.push(
-                context, 
-                OrderDetailPage(orderEntity: orders[index],)
-              );
-            },
-            child: Container(
-              height: 70,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: AppColors.secondBackground,
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {
+            AppNavigator.push(
+              context,
+              OrderDetailPage(orderEntity: orders[index]),
+            );
+          },
+          child: Container(
+            height: 70,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: AppColors.secondBackground,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
                   children: [
-                    Row(
+                    const Icon(Icons.receipt_rounded),
+                    const SizedBox(width: 20),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(
-                          Icons.receipt_rounded
+                        Text(
+                          'Order #${orders[index].code}',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
                         ),
-                        const SizedBox(width: 20, ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Order #${orders[index].code}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16
-                              ),
-                            ),
-                            Text(
-                              '${orders[index].products.length} item',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Colors.grey
-                              ),
-                            ),
-                          ],
-                        )
+                        Text(
+                          '${orders[index].products.length} item',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
-                    const Icon(
-                      Icons.arrow_forward_ios_rounded
-                    )
                   ],
                 ),
+                const Icon(Icons.arrow_forward_ios_rounded),
+              ],
             ),
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(height: 20, ),
-        itemCount: orders.length
+          ),
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(height: 20),
+      itemCount: orders.length,
     );
   }
 }

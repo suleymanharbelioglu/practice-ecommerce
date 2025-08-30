@@ -11,26 +11,29 @@ class OrderModel {
   final String code;
   final List<OrderStatusModel> orderStatus;
 
-  OrderModel(
-      {required this.products,
-      required this.createdDate,
-      required this.shippingAddress,
-      required this.itemCount,
-      required this.totalPrice,
-      required this.code,
-      required this.orderStatus});
+  OrderModel({
+    required this.products,
+    required this.createdDate,
+    required this.shippingAddress,
+    required this.itemCount,
+    required this.totalPrice,
+    required this.code,
+    required this.orderStatus,
+  });
 
   factory OrderModel.fromMap(Map<String, dynamic> map) {
     return OrderModel(
       products: List<ProductOrderedModel>.from(
-          map['products'].map((e) => ProductOrderedModel.fromMap(e))),
+        map['products'].map((e) => ProductOrderedModel.fromMap(e)),
+      ),
       createdDate: map['createdDate'] as String,
       shippingAddress: map['shippingAddress'] as String,
       itemCount: map['itemCount'] as int,
       totalPrice: map['totalPrice'] as double,
       code: map['code'] as String,
       orderStatus: List<OrderStatusModel>.from(
-          map['orderStatus'].map((e) => OrderStatusModel.fromMap(e))),
+        map['orderStatus'].map((e) => OrderStatusModel.fromMap(e)),
+      ),
     );
   }
 }
